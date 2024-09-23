@@ -1,5 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from 'react-query';
 import axios from 'axios';
+import { API_URL } from '../../config';
 
 const fetchEquipment = async () => {
     const response = await axios.get(`${API_URL}/api/equipments/`); // Replace with your actual endpoint
