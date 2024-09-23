@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">AirspaceRecord</string>
+    <string name="title_activity_main">AirspaceRecord</string>
+    <string name="package_name">airrecord.onrender.com</string>
+    <string name="custom_url_scheme">airrecord.onrender.com</string>
+</resources>

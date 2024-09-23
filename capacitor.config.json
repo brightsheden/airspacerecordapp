@@ -1,5 +1,5 @@
 {
-    "appId": "https://airrecord.onrender.com/",
+    "appId": "airrecord.onrender.com",
     "appName": "AirspaceRecord",
     "webDir": "dist",
     "server": {
