@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button } from '@material-tailwind/react';
+import { Alert, Button } from '@material-tailwind/react';
 import { useRegister } from '../ApiHooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 
