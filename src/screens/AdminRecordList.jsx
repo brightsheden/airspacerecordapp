@@ -5,6 +5,7 @@ import { UserStore } from '../state/store';
 import { Button } from '@material-tailwind/react';
 import { FaPlusCircle } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
+import { humanizeTime } from '../utils';
 
 const AdminRecordList = () => {
   // Sample data for demonstration (replace with actual data or API integration)
@@ -82,6 +83,11 @@ const AdminRecordList = () => {
                   <p className="text-black">Remark: {record?.remarks}</p>
                   <p className="text-black">Spare Utilized: {record?.spaire_utilized}</p>
                   <p className="text-black">State: {record?.state}</p>
+                 
+                <p className='text-black'>Uploaded On: {humanizeTime(record.created_at)}</p>
+                <p className='text-black'>Updated On: {humanizeTime(record.updated_at)}</p>
+
+
                 </div>
 
                 {/* Action Buttons */}

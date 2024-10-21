@@ -4,6 +4,7 @@ import { useGetEquipment } from '../ApiHooks/equipemt';
 import { Link, useNavigate } from 'react-router-dom';
 import MobileHeader from '../components/HeaderNav';
 import { Search, Filter } from 'lucide-react';
+import { humanizeTime } from '../utils';
 
 const HomeScreen = () => {
   const userData = UserStore.useState(s => s.user);
@@ -81,7 +82,17 @@ const HomeScreen = () => {
                 <div className={`p-4 rounded-lg shadow-lg ${
                   record.status === 'serviceable' ? 'bg-gradient-to-br from-green-100 to-green-200' : 'bg-gradient-to-br from-red-100 to-red-200'
                 }`}>
-                  <h3 className="text-xl font-bold text-gray-800 mb-2">{record.name}</h3>
+                <div className='flex justify-between mb-2'>
+                <h3 className="text-xl font-bold text-gray-800 mb-2">{record.name}</h3>
+<div className='flex flex-col'>
+<span className='text-sm'>Uploaded On: {humanizeTime(record.created_at)}</span>
+<span className='text-sm'>Updated On: {humanizeTime(record.updated_at)}</span>
+
+</div>
+               
+
+                </div>
+                 
                   <div className="grid grid-cols-2 gap-2 text-sm">
                     <p><span className="font-semibold">Make:</span> {record.make}</p>
                     <p><span className="font-semibold">Hours:</span> {record.hour_of_utilized}</p>

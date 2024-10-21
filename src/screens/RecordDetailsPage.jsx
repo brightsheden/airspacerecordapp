@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useFetchEquipmentById } from '../ApiHooks/equipemt';
 import MobileHeader from '../components/HeaderNav';
 import { ArrowLeft, Clock, Settings, CheckCircle, AlertTriangle, MapPin, FileText } from 'lucide-react';
+import { humanizeTime } from '../utils';
 
 const RecordDetails = () => {
   const { id } = useParams();
@@ -35,13 +36,23 @@ const RecordDetails = () => {
       <div className="p-4 mt-[10vh]">
         <div className="max-w-md mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
           <div className={`p-4 ${record?.status === 'serviceable' ? 'bg-green-500' : 'bg-red-500'} text-white`}>
+            <div className='flex justify-between mb-2'>
+
             <h2 className="text-2xl font-bold">{record?.name}</h2>
+            <div className='flex flex-col'>
+<span className='text-sm'>Uploaded On: {humanizeTime(record.created_at)}</span>
+<span className='text-sm'>Updated On: {humanizeTime(record.updated_at)}</span>
+
+</div>
+
+            </div>
+
             <p className="text-sm opacity-75">{record?.make}</p>
           </div>
           
           <div className="p-4">
             <div className="grid grid-cols-2 gap-4">
-              <DetailItem icon={<Clock size={20} />} label="Hours" value={record?.hours_of_utilized} />
+              <DetailItem icon={<Clock size={20} />} label="Hours" value={record?.hour_of_utilized} />
               <DetailItem 
                 icon={record?.status === 'serviceable' ? <CheckCircle size={20} /> : <AlertTriangle size={20} />} 
                 label="Status" 
