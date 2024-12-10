@@ -3,7 +3,7 @@ import { useAddRecord, useEditRecord, useFetchEquipmentById } from '../ApiHooks/
 import { UserStore } from '../state/store';
 import MobileHeader from '../components/HeaderNav';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Button } from '@material-tailwind/react';
+import { Alert, Button } from '@material-tailwind/react';
 
 const EditRecord = () => {
   const {id} = useParams()
@@ -63,8 +63,12 @@ const navigate = useNavigate()
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <MobileHeader page={"Edit Record"} />
+    
       <div className="w-full max-w-lg bg-white p-8 rounded-lg shadow-lg mt-[10vh] md:mt-0">
         <h2 className="text-2xl font-bold text-center text-black mb-6 hidden md:block ">Add Record</h2>
+        {isError && (
+          <Alert className='bg-red-500 text-white'>{error.response.data.message}</Alert>
+        )}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-black text-sm font-bold mb-2" htmlFor="name">

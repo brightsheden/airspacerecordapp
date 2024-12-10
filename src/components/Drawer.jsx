@@ -15,6 +15,7 @@ import { UserStore } from "../state/store";
 export function DrawerPlacement({openRight, closeDrawerRight}) {
 
   const userInfo = UserStore.useState(state => state?.user?.token)
+  const user = UserStore.useState(state => state?.user)
 
 
   const logoutHandler = () => {
@@ -93,7 +94,7 @@ const navaigate = useNavigate()
   
         
             <div>
-            {userInfo?(
+            {userInfo && user.user_type === 'user' && (
               <div className="space-y-4">
 
 
@@ -105,36 +106,41 @@ const navaigate = useNavigate()
               </div>
 
 
-              <button className="flex items-center gap-2 nav-link" onClick={logoutHandler}>
-                <FaSignOutAlt/>
-              
-                  Logout
-           
-              </button>
+             
               </div>
              
              
-            ): (
+            ) }
 
-              <div className="flex my-5 flex-col w-full justify-between gap-4"
-              >
-                 <Link to={'/login'}>
-              <Button className='bg-black p-2  btn-primary rounded-full w-40 text-white shadow-sm'>
-                
-               
-                Login
-                </Button>
-                </Link>
-                <Link to={'/register'}>
-              <Button className=' bg-primary w-40 rounded-full text-white hover:bg-black'>
-                
-             
-              Register
-               </Button>
-               </Link>
-                </div>
+            {!userInfo ? (
 
-            )}
+<div className="flex my-5 flex-col w-full justify-between gap-4"
+>
+   <Link to={'/login'}>
+<Button className='bg-black p-2  btn-primary rounded-full w-40 text-white shadow-sm'>
+  
+ 
+  Login
+  </Button>
+  </Link>
+  <Link to={'/register'}>
+<Button className=' bg-primary w-40 rounded-full text-white hover:bg-black'>
+  
+
+Register
+ </Button>
+ </Link>
+  </div>
+
+):
+(
+  <button className="flex items-center gap-2 nav-link" onClick={logoutHandler}>
+  <FaSignOutAlt/>
+
+    Logout
+
+</button>
+)}
             
            
             

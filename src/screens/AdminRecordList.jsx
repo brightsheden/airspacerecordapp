@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import MobileHeader from '../components/HeaderNav';
 import { useDelete, useGetEquipment } from '../ApiHooks/equipemt';
 import { UserStore } from '../state/store';
@@ -36,6 +36,13 @@ const AdminRecordList = () => {
     navigate(`/editrecord/${id}/`)
     // Implement your edit logic here
   };
+
+  useEffect(()=>{
+    if(user.user_type != 'user'){
+      navigate('/login')
+    }
+
+  },[user,navigate])
 
   return (
     <div className="min-h-screen bg-gray-100 p-4">
